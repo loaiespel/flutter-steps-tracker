@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 
 class LeaderboardItemEntity extends Equatable {
-  final String uid;
+  final String? uid;
   final String imageUrl;
-  final String name;
-  final int stepsNumber;
-  final int order;
-  final int healthPoints;
+  final String? name;
+  final int? stepsNumber;
+  final int? order;
+  final int? healthPoints;
 
   const LeaderboardItemEntity({
     required this.uid,

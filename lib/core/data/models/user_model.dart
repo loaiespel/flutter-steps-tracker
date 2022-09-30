@@ -1,6 +1,6 @@
 class UserModel {
-  final String uid;
-  final String name;
+  final String? uid;
+  final String? name;
   final int totalSteps;
   final int totalCalories;
   final int healthPoints;

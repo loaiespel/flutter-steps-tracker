@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class UserEntity extends Equatable {
   final String? uid;
-  final String name;
+  final String? name;
 
   const UserEntity({
     this.uid,

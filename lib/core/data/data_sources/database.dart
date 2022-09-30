@@ -52,7 +52,7 @@ class FireStoreDatabase implements Database {
   @override
   Future<void> setUserData(UserModel user) async {
     await _service.setData(
-      path: APIPath.user(user.uid),
+      path: APIPath.user(user.uid ??'1'),
       data: user.toMap(),
     );
   }
@@ -101,7 +101,7 @@ class FireStoreDatabase implements Database {
   Future<void> setDailySteps(
           StepsAndPointsModel stepsAndPoints, String uid) async =>
       _service.setData(
-        path: APIPath.setDailyStepsAndPoints(uid, stepsAndPoints.id ),
+        path: APIPath.setDailyStepsAndPoints(uid, stepsAndPoints.id ?? '1' ),
         data: stepsAndPoints.toMap(),
       );
 

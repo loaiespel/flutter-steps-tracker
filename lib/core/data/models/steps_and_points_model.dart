@@ -1,7 +1,7 @@
 class StepsAndPointsModel {
-  final String id ;
-  final int steps;
-  final int points;
+  final String? id ;
+  final int? steps;
+  final int? points;
 
   const StepsAndPointsModel({
     required this.id ,

@@ -34,7 +34,7 @@ class BottomNavbarRepositoryImpl implements BottomNavbarRepository {
       final user = await _authLocalDataSource.currentUser();
       await _database.setExchangeHistory(
         exchangeHistory,
-        user!.uid,
+        user!.uid??'1',
       );
       return const Right(true);
     } on ApplicationException catch (e) {
@@ -49,7 +49,7 @@ class BottomNavbarRepositoryImpl implements BottomNavbarRepository {
       exchangesHistoryStream() async {
     try {
       final user = await _authLocalDataSource.currentUser();
-      return Right(_database.exchangeHistoryStream(user!.uid));
+      return Right(_database.exchangeHistoryStream(user!.uid??'1'));
     } on ApplicationException catch (e) {
       return Left(
         firebaseExceptionsDecoder(e),
@@ -69,9 +69,9 @@ class BottomNavbarRepositoryImpl implements BottomNavbarRepository {
           steps: steps,
           points: healthPoints,
         ),
-        user!.uid,
+        user!.uid??'1',
       );
-      var myRewardsList = await _database.myRewardsStream(user.uid).first;
+      var myRewardsList = await _database.myRewardsStream(user.uid??'1').first;
       int deletedPoints = 0;
       for (var reward in myRewardsList) {
         deletedPoints += reward.points;
@@ -109,7 +109,7 @@ class BottomNavbarRepositoryImpl implements BottomNavbarRepository {
   Future<Either<Failure, Stream<UserModel>>> getRealTimeUserData() async {
     try {
       final user = await _authLocalDataSource.currentUser();
-      return Right(_database.getUserStream(user!.uid));
+      return Right(_database.getUserStream(user!.uid??'1'));
     } on ApplicationException catch (e) {
       return Left(
         firebaseExceptionsDecoder(e),
@@ -125,9 +125,9 @@ class BottomNavbarRepositoryImpl implements BottomNavbarRepository {
         reward.copyWith(
           id: documentIdFromLocalGenerator(),
         ),
-        user!.uid,
+        user!.uid??'1',
       );
-      var realUserData = await _database.getUserStream(user.uid).first;
+      var realUserData = await _database.getUserStream(user.uid??'1').first;
       await _database.setUserData(
         realUserData.copyWith(
             healthPoints: realUserData.healthPoints - reward.points),

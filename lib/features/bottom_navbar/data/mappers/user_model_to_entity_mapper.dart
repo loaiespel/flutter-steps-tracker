@@ -3,8 +3,8 @@ import 'package:foot_steps/features/bottom_navbar/domain/entities/leaderboard_it
 
 extension UserModelToMapper on List<UserModel> {
   List<LeaderboardItemEntity> toEntity() => map((e) => LeaderboardItemEntity(
-        uid: e.uid,
-        name: e.name,
+        uid: e.uid ??'1',
+        name: e.name??'loai',
         stepsNumber: e.totalSteps,
         order: 0,
         healthPoints: e.healthPoints,

@@ -46,7 +46,7 @@ class LeaderboardItem extends StatelessWidget {
               ),
               const SizedBox(width: 12.0),
               Text(
-                item.name,
+                item.name??'loai',
                 style: Theme.of(context).textTheme.subtitle1!.copyWith(
                       color: Theme.of(context).primaryColorDark,
                       fontWeight: FontWeight.w600,
